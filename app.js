@@ -1,28 +1,23 @@
-import './styles.css';
-const colors = ['#1abc9c', '#3498db', '#9b59b6', '#f39c12', '#e74c3c'];
+const colors = ['white', '#3498db', '#9b59b6', '#f39c12'];
 
-const title = document.querySelector('h2');
+// 파랑 보라 노랑 순으로 커짐
+// colors[0] = 파랑
+// colors[1] = 보라
+// colors[2] = 노랑
 
-const superEventHandler = {
-  handleMouseEnter: function () {
-    title.innerText = 'The mouse is here!';
-    title.style.color = colors[0];
-  },
-  handleMouseLeave: function () {
-    title.innerText = 'The mouse is gone!';
-    title.style.color = colors[1];
-  },
-  handleWindowResize: function () {
-    title.innerText = 'You just resized!';
-    title.style.color = colors[2];
-  },
-  handleContextMenu: function () {
-    title.innerText = 'That was a right click!';
-    title.style.color = colors[4];
-  },
-};
+const body = document.querySelector('body');
 
-title.addEventListener('mouseenter', superEventHandler.handleMouseEnter);
-title.addEventListener('mouseleave', superEventHandler.handleMouseLeave);
-window.addEventListener('resize', superEventHandler.handleWindowResize);
-window.addEventListener('contextmenu', superEventHandler.handleContextMenu);
+function handleWindowResize() {
+  let intViewportWidth = window.innerWidth;
+  if (intViewportWidth < 700) {
+    if (body.classList.contains('medium')) body.classList.remove('medium');
+    body.classList.add('small');
+  } else if (intViewportWidth < 1000) {
+    if (body.classList.contains('large')) body.classList.remove('large');
+    body.classList.add('medium');
+  } else {
+    body.classList.add('large');
+  }
+}
+
+window.addEventListener('resize', handleWindowResize);
