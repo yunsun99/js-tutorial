@@ -1,15 +1,19 @@
-const loginForm = document.querySelector('#login-form');
-const loginInput = document.querySelector('#login-form input');
-const greeting = document.querySelector('#greeting');
+const scopeForm = document.querySelector('#scopeForm');
+const guessingForm = document.querySelector('#guessingForm');
 
-const HIDDEN_CLASSNAME = 'hidden';
-
-function onLoginSubmit(event) {
+function handleGuessingForm(event) {
   event.preventDefault();
-  loginForm.classList.add(HIDDEN_CLASSNAME);
-  const username = loginInput.value;
-  greeting.innerText = 'Hello' + username;
-  greeting.classList.remove(HIDDEN_CLASSNAME);
+  const scope = document.querySelector('#scope').value;
+  const guessedString = document.querySelector('#guessedNumber').value;
+  const guessedNumber = parseInt(guessedString);
+  const chosenNumber = document.querySelector('#chosenNumber');
+  const result = document.querySelector('#result');
+  const randomNumber = Math.random() * scope;
+  const ceiledNumber = Math.ceil(randomNumber);
+
+  chosenNumber.innerText = `You chose: ${guessedNumber}, the machine chose: ${ceiledNumber}`;
+  if (guessedNumber === ceiledNumber) result.innerText = 'You won!';
+  else result.innerText = 'You lost!';
 }
 
-loginForm.addEventListener('submit', onLoginSubmit);
+guessingForm.addEventListener('submit', handleGuessingForm);

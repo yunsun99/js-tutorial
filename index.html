@@ -3,20 +3,25 @@
   <head>
     <title>Vanilla Challenge</title>
     <meta charset="UTF-8" />
-    <link rel="stylesheet" href="style.css" />
   </head>
 
   <body>
-    <form id="login-form">
-      <input
-        required
-        maxlength="15"
-        type="text"
-        placeholder="What is your name?"
-      />
-      <input type="submit" value="Log In" />
+    <h1>Random Number Game</h1>
+    <form id="scopeForm">
+      <h2>
+        Generate a number between 0 and
+        <input required id="scope" type="number" min="0" />
+      </h2>
     </form>
-    <h1 id="greeting" class="hidden"></h1>
-    <script src="app.js"></script>
+    <form id="guessingForm">
+      <h3>
+        Guess the number:
+        <input required id="guessedNumber" type="number" />
+        <input type="submit" value="Play!" />
+      </h3>
+    </form>
+    <h3 id="chosenNumber"></h3>
+    <h2 id="result"></h2>
+    <script src="src/index.js"></script>
   </body>
 </html>
