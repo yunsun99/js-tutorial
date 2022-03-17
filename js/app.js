@@ -1,24 +1,32 @@
-const clockTitle = document.querySelector('.js-clock');
+const colors = [
+  '#ef5777',
+  '#575fcf',
+  '#4bcffa',
+  '#34e7e4',
+  '#0be881',
+  '#f53b57',
+  '#3c40c6',
+  '#0fbcf9',
+  '#00d8d6',
+  '#05c46b',
+  '#ffc048',
+  '#ffdd59',
+  '#ff5e57',
+  '#d2dae2',
+  '#485460',
+  '#ffa801',
+  '#ffd32a',
+  '#ff3f34',
+];
 
-function getDay() {
-  const date = new Date();
-  const christmas = new Date('2022-12-25T00:00:00');
-  const leftTime = christmas - date;
-  const leftDays = Math.floor(leftTime / 1000 / 60 / 60 / 24);
-  const leftHours = String(
-    Math.floor((leftTime / 1000 / 60 / 60) % 24)
-  ).padStart(2, '0');
-  const leftMinutes = String(Math.floor((leftTime / 1000 / 60) % 60)).padStart(
-    2,
-    '0'
-  );
-  const leftSeconds = String(Math.floor((leftTime / 1000) % 60)).padStart(
-    2,
-    '0'
-  );
+const button = document.querySelector('button');
+const body = document.querySelector('body');
 
-  clockTitle.innerText = `${leftDays}d ${leftHours}h ${leftMinutes}m ${leftSeconds}s`;
+function handleButtonClick() {
+  const color1 = colors[Math.floor(Math.random() * colors.length)];
+  const color2 = colors[Math.floor(Math.random() * colors.length)];
+
+  body.style.backgroundImage = `linear-gradient(to right, ${color1}, ${color2})`;
 }
 
-getDay();
-setInterval(getDay, 1000);
+button.addEventListener('click', handleButtonClick);
